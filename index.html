@@ -8,8 +8,14 @@
 	</head>
 	<body>
 		<span>
-			<div>EUR: <span class="js-eur-val"></span></div>
-			<div>USD: <span class="js-usd-val"></span></div>
+			<div class="blockCurrency">
+				<img src="icons/eur.svg" alt="logo-eur" />
+				EUR: <span class="js-eur-val"></span>
+			</div>
+			<div class="blockCurrency">
+				<img src="icons/usd.svg" alt="logo-usd" />
+				USD: <span class="js-usd-val"></span>
+			</div>
 		</span>
 
 		<input class="js-value-input" type="number" placeholder="Введите сумму" />
@@ -17,7 +23,7 @@
 			<option value="usd">USD</option>
 			<option value="eur">EUR</option>
 		</select>
-		<div class="js-output">Output</div>
+		<div class="js-output">0</div>
 		<script src="main.js"></script>
 		<script src="converter.js"></script>
 		<script src="fetch.js"></script>

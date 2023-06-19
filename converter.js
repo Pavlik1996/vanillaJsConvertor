@@ -7,7 +7,6 @@ function convertor(rub, currency) {
 	if (!RATES[currency]) {
 		return null
 	}
-
 	return rub * RATES[currency]
 }
 
@@ -17,8 +16,8 @@ const fetchCur_OfficialRate = async () => {
 	const res = await data
 	res.forEach(el => (el.Cur_Abbreviation === 'EUR' ? (RATES.eur = el.Cur_OfficialRate) : el))
 	res.forEach(el => (el.Cur_Abbreviation === 'USD' ? (RATES.usd = el.Cur_OfficialRate) : el))
-	valEur.innerText = RATES.eur
-	valUsd.innerText = RATES.usd
+	valEur.innerText = RATES.eur + ' BLR'
+	valUsd.innerText = RATES.usd + ' BLR'
 }
 
 fetchCur_OfficialRate()
