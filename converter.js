@@ -1,7 +1,7 @@
-const RATES = {
-	usd: 0.014,
-	eur: 0.013
-}
+const valUsd = document.querySelector('.js-usd-val')
+const valEur = document.querySelector('.js-eur-val')
+
+const RATES = {}
 
 function convertor(rub, currency) {
 	if (!RATES[currency]) {
@@ -10,3 +10,15 @@ function convertor(rub, currency) {
 
 	return rub * RATES[currency]
 }
+
+const fetchCur_OfficialRate = async () => {
+	const response = await fetch('https://api.nbrb.by/exrates/rates?periodicity=0')
+	const data = await response.json()
+	const res = await data
+	res.forEach(el => (el.Cur_Abbreviation === 'EUR' ? (RATES.eur = el.Cur_OfficialRate) : el))
+	res.forEach(el => (el.Cur_Abbreviation === 'USD' ? (RATES.usd = el.Cur_OfficialRate) : el))
+	valEur.innerText = RATES.eur
+	valUsd.innerText = RATES.usd
+}
+
+fetchCur_OfficialRate()
